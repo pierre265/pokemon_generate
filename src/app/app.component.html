@@ -1,22 +1,27 @@
-<h1 class="center">Liste de Pokémons</h1>
+<h1 class="center">Pokémons</h1>
 
-<div class="container" >
+<div class="container">
   <div class="row">
     <div class="col m4 s6" *ngFor="let pokemon of pokemonList">
-      <div class="card horizontal">
+      <div
+        class="card horizontal"
+        (click)="selectPokemon(pokemon.id.toString())"
+        appBorderCard="red"
+      >
         <div class="card-image">
-          <img [src]="pokemon.picture" [alt]="pokemon.name">
+          <img [src]="pokemon.picture" [alt]="pokemon.name" />
         </div>
         <div class="card-stacked">
           <div class="card-content">
+            <!-- Interpolation -->
             <p>{{ pokemon.name }}</p>
             <p>{{ pokemon.created }}</p>
           </div>
           <div class="card-action">
             <a [routerLink]="['/pokemon', pokemon.id]">Voir</a>
           </div>
+        </div>
       </div>
-        
     </div>
   </div>
 </div>
