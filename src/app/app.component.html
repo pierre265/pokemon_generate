@@ -1,34 +1,10 @@
-<h1 class="center">Pokémons</h1>
-
-<div class="container">
-  <div class="row">
-    <div class="col m4 s6" *ngFor="let pokemon of pokemonList">
-      <div
-        class="card horizontal"
-        (click)="selectPokemon(pokemon.id.toString())"
-        appBorderCard
-      >
-        <div class="card-image">
-          <img [src]="pokemon.picture" [alt]="pokemon.name" />
-        </div>
-        <div class="card-stacked">
-          <div class="card-content">
-            <!-- Interpolation -->
-            <p>{{ pokemon.name }}</p>
-            <!-- Pipe -->
-            <p>{{ pokemon.created | date : "dd/MM/yyyy" }}</p>
-            <span
-              *ngFor="let type of pokemon.types"
-              class="{{ type | pokemonTypeColor }}"
-            >
-              {{ type }}
-            </span>
-          </div>
-          <div class="card-action">
-            <a [routerLink]="['/pokemon', pokemon.id]">Voir</a>
-          </div>
-        </div>
-      </div>
-    </div>
+<nav>
+  <div class="nav-wrapper teal">
+    <a href="#" class="brand-logo center">
+      Pokédex
+    </a>
   </div>
-</div>
+</nav>
+
+<router-outlet></router-outlet>
+
