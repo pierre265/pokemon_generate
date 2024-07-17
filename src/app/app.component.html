@@ -6,7 +6,7 @@
       <div
         class="card horizontal"
         (click)="selectPokemon(pokemon.id.toString())"
-        appBorderCard="red"
+        appBorderCard
       >
         <div class="card-image">
           <img [src]="pokemon.picture" [alt]="pokemon.name" />
@@ -15,7 +15,14 @@
           <div class="card-content">
             <!-- Interpolation -->
             <p>{{ pokemon.name }}</p>
-            <p>{{ pokemon.created }}</p>
+            <!-- Pipe -->
+            <p>{{ pokemon.created | date : "dd/MM/yyyy" }}</p>
+            <span
+              *ngFor="let type of pokemon.types"
+              class="{{ type | pokemonTypeColor }}"
+            >
+              {{ type }}
+            </span>
           </div>
           <div class="card-action">
             <a [routerLink]="['/pokemon', pokemon.id]">Voir</a>
