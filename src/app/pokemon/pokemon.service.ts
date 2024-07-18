@@ -2,16 +2,14 @@ import { Injectable } from "@angular/core";
 import { POKEMONS } from "./mock-pockemon-list";
 import { Pokemon } from "./pokemon";
 
-@Injectable({
-  providedIn: "root",
-})
+@Injectable()
 export class PokemonService {
   getPokemonList(): Pokemon[] {
     return POKEMONS;
   }
 
   getPokemonById(pokemonId: number): Pokemon | undefined {
-    return POKEMONS.find((pokemon) => pokemonId);
+    return POKEMONS.find(pokemon => pokemon.id == pokemonId);
   }
 
   getPokemonTypeList(): string[] {
