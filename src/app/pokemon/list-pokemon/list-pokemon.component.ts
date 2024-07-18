@@ -10,7 +10,9 @@ import { Pokemon } from "../pokemon";
 export class ListPokemonComponent {
   pokemonList: Pokemon[] = POKEMONS;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    
+  }
 
   goToPokemon(pokemon: Pokemon) {
     this.router.navigate(["/pokemon", pokemon.id]);
