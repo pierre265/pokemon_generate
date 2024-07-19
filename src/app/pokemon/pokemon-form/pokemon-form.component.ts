@@ -6,15 +6,18 @@ import { PokemonService } from "../pokemon.service";
 @Component({
   selector: "app-pokemon-form",
   templateUrl: "./pokemon-form.component.html",
+  styleUrls: ["./pokemon-form.component.css"]
 })
 export class PokemonFormComponent implements OnInit {
   @Input() pokemon: Pokemon;
-
   types: string[];
 
-  constructor(private pokemonService: PokemonService, private router: Router) {}
+  constructor(
+    private pokemonService: PokemonService, 
+    private router: Router
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.types = this.pokemonService.getPokemonTypeList();
   }
 
@@ -22,6 +25,7 @@ export class PokemonFormComponent implements OnInit {
     return this.pokemon.types.includes(type);
   }
 
+  
   selectType($event: Event, type: string) {
     const isChecked: boolean = ($event.target as HTMLInputElement).checked;
     if (isChecked) {
@@ -29,8 +33,20 @@ export class PokemonFormComponent implements OnInit {
     } else {
       const index = this.pokemon.types.indexOf(type);
       this.pokemon.types.splice(index, 1);
-    } 
+    }
   }
+
+  isTypesValid(type: string): boolean {
+    //Si le user a coché une case on l'empêche de la décocher pour s'assurer que le choix d'au-moins un type soit fait
+    if (this.pokemon.types.length === 1 && this.hasType(type)) {
+      return false;
+    }
+    if (this.pokemon.types.length >= 2 && !this.hasType(type)) {
+      return false;
+    }
+    return true;
+  }
+
 
   onSubmit() {
     console.log("Submit form !");
