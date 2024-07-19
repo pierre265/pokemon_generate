@@ -11,7 +11,6 @@ import { PokemonService } from '../pokemon.service';
     </h2>
 
      <p *ngIf="pokemon" class="center">
-     
       <img [src]="pokemon.picture">
     </p>
     
@@ -22,7 +21,7 @@ import { PokemonService } from '../pokemon.service';
 })
 export class EditPokemonComponent implements OnInit{
 
-  pokemon: Pokemon | undefined; 
+  pokemon: Pokemon|undefined; 
 
   constructor(
     private pokemonService: PokemonService,

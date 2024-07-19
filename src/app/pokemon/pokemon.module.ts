@@ -22,6 +22,7 @@ const pokemonRoutes: Routes = [
     BorderCardDirective,
     PokemonTypeColorPipe,
     PokemonFormComponent,
+    EditPokemonComponent,
   ],
   imports: [CommonModule, FormsModule, RouterModule.forChild(pokemonRoutes)],
   providers: [PokemonService],
