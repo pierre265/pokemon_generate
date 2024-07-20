@@ -7,16 +7,15 @@ import { PokemonService } from "../pokemon.service";
   selector: "app-list-pokemon",
   templateUrl: "./list-pokemon.component.html",
 })
-export class ListPokemonComponent implements OnInit{
+export class ListPokemonComponent implements OnInit {
   pokemonList: Pokemon[];
 
-  constructor(
-    private router: Router,
-    private pokemonService: PokemonService 
-  ) {}
+  constructor(private router: Router, private pokemonService: PokemonService) {}
 
   ngOnInit() {
-    this.pokemonList = this.pokemonService.getPokemonList();
+    this.pokemonService
+      .getPokemonList()
+      .subscribe((pokemonList) => (this.pokemonList = pokemonList));
   }
 
   goToPokemon(pokemon: Pokemon) {
