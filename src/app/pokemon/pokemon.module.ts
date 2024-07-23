@@ -22,8 +22,8 @@ const pokemonRoutes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: "add/pokemon", component: AddPokemonComponent },
-  { path: "pokemons", component: ListPokemonComponent },
-  { path: "pokemon/:id", component: DetailPokemonComponent },
+  { path: "pokemons", component: ListPokemonComponent, canActivate: [AuthGuard] },
+  { path: "pokemon/:id", component: DetailPokemonComponent, canActivate: [AuthGuard] },
 ];
 @NgModule({
   declarations: [
